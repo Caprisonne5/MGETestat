@@ -13,13 +13,13 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".AddPlayer"
+            android:name=".AddPlayerActivity"
             android:exported="false" />
         <activity
-            android:name=".Match"
+            android:name=".MatchActivity"
             android:exported="false" />
         <activity
-            android:name=".StartGame"
+            android:name=".StartMatchActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -14,17 +14,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button addPlayerButton = findViewById(R.id.addplayerbutton);
-        Button startGameButton = findViewById(R.id.creatematchbutton);
+        Button createMatchButton = findViewById(R.id.creatematchbutton);
 
 
-        startGameButton.setOnClickListener(v -> {
-            Intent myIntent = new Intent(this, StartGame.class);
+        createMatchButton.setOnClickListener(v -> {
+            Intent myIntent = new Intent(this, StartMatchActivity.class);
             //myIntent.putExtra("key", value); //Optional parameters
             startActivity(myIntent);
         });
 
         addPlayerButton.setOnClickListener(v -> {
-            Intent myIntent = new Intent(this, AddPlayer.class);
+            Intent myIntent = new Intent(this, AddPlayerActivity.class);
             //myIntent.putExtra("key", value); //Optional parameters
             startActivity(myIntent);
         });
