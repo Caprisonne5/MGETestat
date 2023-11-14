@@ -1,11 +1,17 @@
 package Model;
 
-public class Player {
-    private String name;
-    private int id;
-    public Player(String name, int id) {
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "players")
+public final class Player {
+    @PrimaryKey(autoGenerate = true)
+    public int id;
+    @ColumnInfo
+    public String name;
+    public Player(String name) {
         this.name = name;
-        this.id = id;
     }
 
     public String getName() {return name;}

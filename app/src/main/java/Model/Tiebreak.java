@@ -1,8 +1,10 @@
 package Model;
 
+
 public class Tiebreak {
-    private int pointsP1;
-    private int pointsP2;
+
+    public int pointsP1;
+    public int pointsP2;
     private boolean tieBreakFinished;
 
     public Tiebreak (){
@@ -24,14 +26,14 @@ public class Tiebreak {
         }
     }
 
-    public String evalScore (int PlayerToInc, Set set) {
+    public String evalScore (int PlayerToInc, MatchSet matchSet) {
         if ((pointsP1 >= 6 && (pointsP1-pointsP2) >= 1 && PlayerToInc == 1) || ((pointsP2-pointsP1) >= 1 && pointsP2 >= 6 && PlayerToInc == 2)){
             incPoint(PlayerToInc);
             setTieBreakFinished(true);
             if (PlayerToInc == 1){
-                set.incPointsPlayer1();
+                matchSet.incPointsPlayer1();
             }else {
-                set.incPointsPlayer2();
+                matchSet.incPointsPlayer2();
             }
         } else {
             incPoint(PlayerToInc);

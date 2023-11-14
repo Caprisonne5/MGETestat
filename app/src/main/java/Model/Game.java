@@ -17,12 +17,12 @@ public class Game {
         return this.newGame;
     }
 
-    public String evalScore(Set set, int PlayerToInc) {
+    public String evalScore(MatchSet matchSet, int PlayerToInc) {
         String score = "";
         adjustScore(PlayerToInc);
 
         if (newGame) {
-            SetCounter.evalScore(set, PlayerToInc);
+            SetCounter.evalScore(matchSet, PlayerToInc);
             return score;
         }
 

@@ -10,9 +10,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import Model.Match;
-import Model.Set;
+import Model.MatchSet;
 import Model.Game;
-import Model.Tiebreak;
 import Services.SetCounter;
 
 public class MatchActivity extends AppCompatActivity {
@@ -22,7 +21,7 @@ public class MatchActivity extends AppCompatActivity {
     private TextView setScore;
     private TextView setScoreTitle;
     private Game game;
-    private Set set;
+    private MatchSet matchSet;
     private TableLayout setOverview;
 
     @Override
@@ -41,12 +40,11 @@ public class MatchActivity extends AppCompatActivity {
         setScoreTitle = findViewById(R.id.scoreTitle);
 
 
-
         Match = new Match();
-        set = new Set();
+        matchSet = new MatchSet(Match.MatchId);
         game = new Game();
 
-        setScore.setText(String.format(getString(R.string.default_setscore), set.getPointsPlayer1(), set.getPointsPlayer2()));
+        setScore.setText(String.format(getString(R.string.default_setscore), matchSet.getPointsPlayer1(), matchSet.getPointsPlayer2()));
         nameP1Table.setText("Peter"); //Rausnehmen
         nameP2Table.setText("Frank");
 
@@ -54,22 +52,22 @@ public class MatchActivity extends AppCompatActivity {
 
         addPointP1.setOnClickListener(v -> {
             String score = "";
-            if (set.getTiebreak() != null && !(set.getTiebreak().getTiebreakFinished())){
-                score = set.getTiebreak().evalScore(1, set);
+            if (matchSet.getTiebreak() != null && !(matchSet.getTiebreak().getTiebreakFinished())){
+                score = matchSet.getTiebreak().evalScore(1, matchSet);
                 updateScore(score);
             }else {
-                score = game.evalScore(set, 1);
+                score = game.evalScore(matchSet, 1);
                 updateScore(score);
             }
         });
 
         addPointP2.setOnClickListener(v -> {
             String score = "";
-            if (set.getTiebreak() != null && !(set.getTiebreak().getTiebreakFinished())){
-                score = set.getTiebreak().evalScore(2, set);
+            if (matchSet.getTiebreak() != null && !(matchSet.getTiebreak().getTiebreakFinished())){
+                score = matchSet.getTiebreak().evalScore(2, matchSet);
                 updateScore(score);
             }else {
-                score = game.evalScore(set, 2);
+                score = game.evalScore(matchSet, 2);
                 updateScore(score);
             }
         });
@@ -77,22 +75,23 @@ public class MatchActivity extends AppCompatActivity {
     }
 
     private void updateScore(String score) {
-        if (game.getNewGame() && !(set.getTiebreak() != null && set.getTiebreak().getTiebreakFinished())){
+        if (game.getNewGame() && !(matchSet.getTiebreak() != null && matchSet.getTiebreak().getTiebreakFinished())){
             this.game = new Game();
             score = "0 : 0";
-            setScore.setText(String.format(getString(R.string.default_setscore), set.getPointsPlayer1(), set.getPointsPlayer2()));
+            setScore.setText(String.format(getString(R.string.default_setscore), matchSet.getPointsPlayer1(), matchSet.getPointsPlayer2()));
         }
-        if (SetCounter.needsTiebreak(set) && set.getTiebreak() == null){
-            this.set.setTiebreak();
+        if (SetCounter.needsTiebreak(matchSet) && matchSet.getTiebreak() == null){
+            this.matchSet.setTiebreak();
             setScoreTitle.setText(getString(R.string.tiebreak_scoretitle));
         }
-        if (set.getNewSet() || (set.getTiebreak() != null && set.getTiebreak().getTiebreakFinished())){
+        if (matchSet.getNewSet() || (matchSet.getTiebreak() != null && matchSet.getTiebreak().getTiebreakFinished())){
             setScore.setText(String.format(getString(R.string.default_setscore), 0, 0));
             setScoreTitle.setText(getString(R.string.default_scoretitle));
 
+            Match.addSet(matchSet);
             addSetToOverview();
 
-            this.set = new Set();
+            this.matchSet = new MatchSet(Match.MatchId);
             score = "0 : 0";
         }
         gameScore.setText(score);
@@ -109,8 +108,8 @@ public class MatchActivity extends AppCompatActivity {
     private void addSetToOverview(){
         TableRow newRow = new TableRow(this);
 
-        TextView cell1 = createTextView(String.valueOf(set.getPointsPlayer1()));
-        TextView cell2 = createTextView(String.valueOf(set.getPointsPlayer2()));
+        TextView cell1 = createTextView(String.valueOf(matchSet.getPointsPlayer1()));
+        TextView cell2 = createTextView(String.valueOf(matchSet.getPointsPlayer2()));
 
         newRow.addView(cell1);
         newRow.addView(cell2);
