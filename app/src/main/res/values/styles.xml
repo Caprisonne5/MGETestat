@@ -7,4 +7,9 @@
         <item name="colorPrimaryVariant">#145A00</item>
         <item name="colorOnPrimary">@color/colorOnPrimary</item>
     </style>
+    <style name="EndButton" parent= "ThemeOverlay.AppCompat">
+        <item name="colorPrimary">#D2C60C0C</item>
+        <item name="colorPrimaryVariant">#5A0000</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+    </style>
 </resources>

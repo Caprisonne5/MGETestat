@@ -5,4 +5,7 @@
     <string name="start_game">Start Match</string>
     <string name="default_gamescore">0 : 0</string>
     <string name="default_setscore">Player 1: %1$d Player 2: %2$d</string>
+    <string name="default_scoretitle">Game:</string>
+    <string name="setscore_title">Current Set:</string>
+    <string name="tiebreak_scoretitle">Tiebreak:</string>
 </resources>

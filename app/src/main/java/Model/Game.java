@@ -1,5 +1,7 @@
 package Model;
 
+import Services.SetCounter;
+
 public class Game {
     private int pointsP1;
     private int pointsP2;
@@ -20,11 +22,7 @@ public class Game {
         adjustScore(PlayerToInc);
 
         if (newGame) {
-            if (PlayerToInc == 1){
-                set.incPointsPlayer1();
-            } else if (PlayerToInc == 2) {
-                set.incPointsPlayer2();
-            }
+            SetCounter.evalScore(set, PlayerToInc);
             return score;
         }
 
