@@ -1,5 +1,6 @@
 package Model.storage;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Embedded;
 import androidx.room.Relation;
 
@@ -18,5 +19,4 @@ public class MatchesWithSets {
             entityColumn = "MatchId"
     )
     public List<MatchSet> matchSets;
-
 }

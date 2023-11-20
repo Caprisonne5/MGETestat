@@ -13,7 +13,9 @@ public class MatchRepository {
     private static MatchDatabase database;
     public static void initialize(Context context) {
         database = Room.databaseBuilder(context, MatchDatabase.class, "match.db").allowMainThreadQueries().build();
+
             addMatch();
+
     }
 
     public static List<MatchesWithSets> getMatches() {
@@ -22,20 +24,29 @@ public class MatchRepository {
     public static void addMatch(Match match) {
         database.matchDao().insertMatch(match);
     }
+    public static void addSet (MatchSet set) { database.matchDao().insertMatchSet(set); }
     public static Match addMatch () {
         Match match = new Match();
         MatchSet matchSet1 = new MatchSet(match.MatchId);
         MatchSet matchSet2 = new MatchSet(match.MatchId);
-        Player p1 = new Player("Kevin");
-        Player p2 = new Player("Markus");
+
+        matchSet1.setPointsPlayer1(6);
+        matchSet1.setPointsPlayer2(7);
+
+        matchSet2.setPointsPlayer1(6);
+        matchSet2.setPointsPlayer2(4);
+
 
         match.matchSets.add(matchSet1);
         match.matchSets.add(matchSet2);
 
-        match.P1 = p1;
-        match.P2 = p2;
+        match.P1 = "Markus";
+        match.P2 = "Robert";
 
+        addSet(matchSet1);
+        addSet(matchSet2);
         addMatch(match);
         return match;
     }
 }
+

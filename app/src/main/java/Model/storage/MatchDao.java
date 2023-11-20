@@ -21,5 +21,7 @@ public interface MatchDao {
 
         @Insert
         void insertMatch(Match match);
+        @Insert
+        void insertMatchSet(MatchSet set);
 
     }

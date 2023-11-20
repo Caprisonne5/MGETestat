@@ -2,6 +2,7 @@ package com.example.mgetestat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.Button;
@@ -10,19 +11,21 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import Model.Match;
+import Model.MatchRepository;
 import Model.MatchSet;
 import Model.Game;
 import Services.SetCounter;
 
 public class MatchActivity extends AppCompatActivity {
 
-    private Match Match;
+    private Match match;
     private TextView gameScore;
     private TextView setScore;
     private TextView setScoreTitle;
     private Game game;
     private MatchSet matchSet;
     private TableLayout setOverview;
+    private Button endMatchButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,7 @@ public class MatchActivity extends AppCompatActivity {
 
         Button addPointP1 = findViewById(R.id.addPointP1);
         Button addPointP2 = findViewById(R.id.addPointP2);
+        endMatchButton = findViewById(R.id.endMatchButton);
         setOverview = findViewById(R.id.setOverview);
         TextView nameP1Table = findViewById(R.id.nameP1Table);
         TextView nameP2Table = findViewById(R.id.nameP2Table);
@@ -40,13 +44,18 @@ public class MatchActivity extends AppCompatActivity {
         setScoreTitle = findViewById(R.id.scoreTitle);
 
 
-        Match = new Match();
-        matchSet = new MatchSet(Match.MatchId);
+        match = new Match();
+        matchSet = new MatchSet(match.MatchId);
         game = new Game();
 
         setScore.setText(String.format(getString(R.string.default_setscore), matchSet.getPointsPlayer1(), matchSet.getPointsPlayer2()));
-        nameP1Table.setText("Peter"); //Rausnehmen
+
+        //Rausnehmen
+        nameP1Table.setText("Peter");
         nameP2Table.setText("Frank");
+        match.P1 = "Peter";
+        match.P2 = "Frank";
+        //Rausnehmen
 
 
 
@@ -72,6 +81,12 @@ public class MatchActivity extends AppCompatActivity {
             }
         });
 
+        endMatchButton.setOnClickListener(v -> {
+            MatchRepository.addMatch(match);
+            Intent myIntent = new Intent(this, MainActivity.class);
+            startActivity(myIntent);
+        });
+
     }
 
     private void updateScore(String score) {
@@ -88,10 +103,12 @@ public class MatchActivity extends AppCompatActivity {
             setScore.setText(String.format(getString(R.string.default_setscore), 0, 0));
             setScoreTitle.setText(getString(R.string.default_scoretitle));
 
-            Match.addSet(matchSet);
+            match.addSet(matchSet);
             addSetToOverview();
 
-            this.matchSet = new MatchSet(Match.MatchId);
+            endMatchButton.setEnabled(true);
+
+            this.matchSet = new MatchSet(match.MatchId);
             score = "0 : 0";
         }
         gameScore.setText(score);
