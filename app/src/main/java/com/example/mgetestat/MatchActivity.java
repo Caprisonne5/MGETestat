@@ -49,14 +49,16 @@ public class MatchActivity extends AppCompatActivity {
         matchSet = new MatchSet(match.MatchId);
         game = new Game();
 
+        //Alle Werte setzen
+        String NamePlayer1 = getIntent().getStringExtra("Player1Name");
+        String NamePlayer2 = getIntent().getStringExtra("Player2Name");
+
         setScore.setText(String.format(getString(R.string.default_setscore), matchSet.getPointsPlayer1(), matchSet.getPointsPlayer2()));
 
-        //Rausnehmen
-        nameP1Table.setText("Peter");
-        nameP2Table.setText("Frank");
-        match.P1 = "Peter";
-        match.P2 = "Frank";
-        //Rausnehmen
+        nameP1Table.setText(NamePlayer1);
+        nameP2Table.setText(NamePlayer2);
+        match.P1 = NamePlayer1;
+        match.P2 = NamePlayer2;
 
 
 

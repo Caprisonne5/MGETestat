@@ -10,4 +10,8 @@
     <string name="tiebreak_scoretitle">Tiebreak:</string>
     <string name="endmatch_button">End Match</string>
     <string name="nomatches_filler">No Matches Played</string>
+    <string name="startmatch_title">Select Players</string>
+    <string name="startmatch_description">Enter Names for Player 1 and Player 2</string>
+    <string name="label_nameP1">Player 1:</string>
+    <string name="label_nameP2">Player 2:</string>
 </resources>
