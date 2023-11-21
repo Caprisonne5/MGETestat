@@ -15,7 +15,7 @@ import Model.MatchSet;
 @Dao
 public interface MatchDao {
         @Transaction
-        @Query("SELECT * FROM matches")
+        @Query("SELECT * FROM matches ORDER BY date DESC")
         List<MatchesWithSets> getMatchesWithSets();
         @Query("SELECT * FROM matchsets WHERE MatchId = :matchId")
         List<MatchSet> getSetsForMatch(int matchId);
