@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mgetestat.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,26 +34,30 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchViewHolder> {
         LayoutInflater inflater = LayoutInflater.from(context);
 
         View view = inflater.inflate(
-                android.R.layout.simple_list_item_2,
+                R.layout.match_custom_layout,
                 parent,
                 false);
 
-        TextView Player1 = view.findViewById(android.R.id.text1);
-        TextView Player2 = view.findViewById(android.R.id.text2);
+        TextView Player1 = view.findViewById(R.id.p1_name);
+        TextView Player2 = view.findViewById(R.id.p2_name);
+        TextView ScoreP1 = view.findViewById(R.id.p1_score);
+        TextView ScoreP2 = view.findViewById(R.id.p2_score);
 
-
-        return new MatchViewHolder(view, Player1, Player2);
+        return new MatchViewHolder(view, Player1, Player2, ScoreP1, ScoreP2);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MatchViewHolder holder, int position) {
         MatchesWithSets match = this.matches.get(position);
-        holder.Player1.setText(match.match.P1);
-        holder.Player2.setText(match.match.P2);
+        holder.Player1.setText(match.getPlayer1());
+        holder.Player2.setText(match.getPlayer2());
+        holder.ScoreP1.setText(match.setsToString(1));
+        holder.ScoreP2.setText(match.setsToString(2));
     }
 
     @Override
     public int getItemCount() {
         return this.matches.size();
     }
+
 }

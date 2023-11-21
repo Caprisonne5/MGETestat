@@ -5,15 +5,23 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.List;
 
 import Adapter.MatchAdapter;
 import Model.MatchRepository;
+import Model.storage.MatchesWithSets;
 
 public class MainActivity extends AppCompatActivity {
     private MatchAdapter adapter;
+    private TextView emptyList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button createMatchButton = findViewById(R.id.creatematchbutton);
+        emptyList = findViewById(R.id.emptyList);
 
 
         createMatchButton.setOnClickListener(v -> {
@@ -41,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        adapter.updateMatches(MatchRepository.getMatches());
+        List<MatchesWithSets> matches = MatchRepository.getMatches();
+        if (matches.size() != 0) {
+            emptyList.setVisibility(View.INVISIBLE);
+        }
+        adapter.updateMatches(matches);
     }
 }

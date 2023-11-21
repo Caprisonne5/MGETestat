@@ -2,6 +2,7 @@ package Model.storage;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Transaction;
 
@@ -19,7 +20,7 @@ public interface MatchDao {
         @Query("SELECT * FROM matchsets WHERE MatchId = :matchId")
         List<MatchSet> getSetsForMatch(int matchId);
 
-        @Insert
+        @Insert(onConflict = OnConflictStrategy.REPLACE)
         void insertMatch(Match match);
         @Insert
         void insertMatchSet(MatchSet set);

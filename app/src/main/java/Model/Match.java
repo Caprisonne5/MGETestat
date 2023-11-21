@@ -8,10 +8,11 @@ import androidx.room.PrimaryKey;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity(tableName = "matches")
 public final class Match {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     public int MatchId;
     @Ignore
     public List<MatchSet> matchSets;
@@ -20,7 +21,8 @@ public final class Match {
     @ColumnInfo
     public String P2;
 
-    public Match(){
+    public Match(int MatchId){
+        this.MatchId = MatchId;
         this.matchSets = new ArrayList<>();
     }
 

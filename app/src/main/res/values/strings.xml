@@ -9,4 +9,5 @@
     <string name="setscore_title">Current Set:</string>
     <string name="tiebreak_scoretitle">Tiebreak:</string>
     <string name="endmatch_button">End Match</string>
+    <string name="nomatches_filler">No Matches Played</string>
 </resources>

@@ -15,6 +15,7 @@ import Model.MatchRepository;
 import Model.MatchSet;
 import Model.Game;
 import Services.SetCounter;
+import Services.RandomId;
 
 public class MatchActivity extends AppCompatActivity {
 
@@ -44,7 +45,7 @@ public class MatchActivity extends AppCompatActivity {
         setScoreTitle = findViewById(R.id.scoreTitle);
 
 
-        match = new Match();
+        match = new Match(RandomId.generateId());
         matchSet = new MatchSet(match.MatchId);
         game = new Game();
 
@@ -83,6 +84,7 @@ public class MatchActivity extends AppCompatActivity {
 
         endMatchButton.setOnClickListener(v -> {
             MatchRepository.addMatch(match);
+            persistMatchSets();
             Intent myIntent = new Intent(this, MainActivity.class);
             startActivity(myIntent);
         });
@@ -132,5 +134,10 @@ public class MatchActivity extends AppCompatActivity {
         newRow.addView(cell2);
 
         setOverview.addView(newRow);
+    }
+    private void persistMatchSets () {
+        for (MatchSet set : this.match.matchSets) {
+            MatchRepository.addSet(set);
+        }
     }
 }

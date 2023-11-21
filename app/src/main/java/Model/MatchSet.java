@@ -10,7 +10,7 @@ public final class MatchSet {
     @PrimaryKey(autoGenerate = true)
     public int SetId;
     @ColumnInfo
-    public int MatchId;
+    public int matchId;
     @ColumnInfo
     private int pointsPlayer1;
     @ColumnInfo
@@ -19,8 +19,8 @@ public final class MatchSet {
     private boolean newSet;
     @Ignore
     private Tiebreak tiebreak;
-    public MatchSet(int MatchId){
-        this.MatchId = MatchId;
+    public MatchSet(int matchId){
+        this.matchId = matchId;
         this.pointsPlayer1 = 0;
         this.pointsPlayer2 = 0;
         this.newSet = false;
