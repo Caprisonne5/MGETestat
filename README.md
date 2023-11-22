@@ -13,7 +13,7 @@ Mithilfe des "Create New Match" Buttons können sie ein neues Spiel starten
 Startseite:
 
 ![StartScreenshot](https://github.com/Caprisonne5/MGETestat/assets/145682755/9b6ead67-b294-44c0-87f8-091885c15ca2)
-<img src="(https://github.com/Caprisonne5/MGETestat/assets/145682755/9b6ead67-b294-44c0-87f8-091885c15ca2)" width="100" height="100">
+![Alt text]((https://github.com/Caprisonne5/MGETestat/assets/145682755/9b6ead67-b294-44c0-87f8-091885c15ca2))
 
 In der darauf folgenden Ansicht, müssen zwei Namen für Spieler 1 und 2 eingetragen werden (2 < Namenlänge <= 15),
 erst dann wird der "Start Match" Button clickable.
