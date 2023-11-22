@@ -47,22 +47,24 @@
         android:id="@+id/nameP1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Peter"
         app:layout_constraintStart_toStartOf="@+id/addPointP1"
-        app:layout_constraintBottom_toTopOf="@+id/addPointP1"/>
+        app:layout_constraintBottom_toTopOf="@+id/addPointP1"
+        app:layout_constraintEnd_toEndOf="@+id/addPointP1"/>
 
     <TextView
         android:id="@+id/nameP2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Frank"
         app:layout_constraintStart_toStartOf="@+id/addPointP2"
-        app:layout_constraintBottom_toTopOf="@+id/addPointP2"/>
+        app:layout_constraintBottom_toTopOf="@+id/addPointP2"
+        app:layout_constraintEnd_toEndOf="@+id/addPointP2"/>
+
     <TextView
         android:id="@+id/scoreTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/default_scoretitle"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="2dp"
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/gameScore"

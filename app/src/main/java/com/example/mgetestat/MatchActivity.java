@@ -39,6 +39,8 @@ public class MatchActivity extends AppCompatActivity {
         setOverview = findViewById(R.id.setOverview);
         TextView nameP1Table = findViewById(R.id.nameP1Table);
         TextView nameP2Table = findViewById(R.id.nameP2Table);
+        TextView nameP1Button = findViewById(R.id.nameP1);
+        TextView nameP2Button = findViewById(R.id.nameP2);
 
         gameScore = findViewById(R.id.gameScore);
         setScore = findViewById(R.id.setScore);
@@ -57,6 +59,8 @@ public class MatchActivity extends AppCompatActivity {
 
         nameP1Table.setText(NamePlayer1);
         nameP2Table.setText(NamePlayer2);
+        nameP1Button.setText(NamePlayer1);
+        nameP2Button.setText(NamePlayer2);
         match.P1 = NamePlayer1;
         match.P2 = NamePlayer2;
 
