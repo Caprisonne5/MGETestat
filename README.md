@@ -25,7 +25,7 @@ erst dann wird der "Start Match" Button clickable.
 
 
 Die Match-Seite ist Simpel gehalten. Oben findet man die Punktzahl des aktuellen Sets. Darunter befinden sich
-die Knöpfe, mit welchen Sie Punkte auf die Konten der jeweiligen Spieler addieren können. Darauf folgt die
+die Knöpfe, mit denen Sie Punkte auf die Konten der jeweiligen Spieler addieren können. Darauf folgt die
 Punkteübersicht zum aktuellen Game.
 
 <img src="https://github.com/Caprisonne5/MGETestat/blob/main/3.png" width="400">
