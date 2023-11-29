@@ -4,7 +4,7 @@
 Die Tennis Score App ist eine, in Java geschriebene Android Applikation.
 Die App nimmt einem, während eines Tennisspiels unter Freunden / Bekannten / Rivalen, nicht
 nur das Zählen ab, mithilfe der Room Library werden die absolvierten Spiele gespeichert und
-übersichtlich nach Datum, auf der Startseite der App aufgelistet.
+übersichtlich nach Datum sortiert, auf der Startseite der App aufgelistet.
 
 ## How to Use it
 Auf der Startseite sehen Sie, die gespielten Spiele mit den jeweiligen Gewinnern.
